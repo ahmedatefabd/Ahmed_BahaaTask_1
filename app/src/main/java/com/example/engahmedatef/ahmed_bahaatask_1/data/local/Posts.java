@@ -1,5 +1,6 @@
 package com.example.engahmedatef.ahmed_bahaatask_1.data.local;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -21,8 +22,16 @@ public class Posts implements Parcelable {
     @Expose
     private String body;
 
+    private Context context;
 
-    protected Posts(Parcel in) {
+    public Posts(int id, String title, String body , Context context) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.context = context ;
+    }
+
+    public Posts(Parcel in) {
         userId = in.readInt();
         id = in.readInt();
         title = in.readString();
@@ -41,6 +50,10 @@ public class Posts implements Parcelable {
         }
     };
 
+    public Posts() {
+
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -53,8 +66,8 @@ public class Posts implements Parcelable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
     }
 
     public String getTitle() {

@@ -42,4 +42,10 @@ dependencies {
 
     //network
     implementation 'com.amitshekhar.android:android-networking:1.0.1'
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 }

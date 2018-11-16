@@ -11,5 +11,10 @@ public class PostsApp extends Application {
         super.onCreate();
 
         AndroidNetworking.initialize(getApplicationContext());
+
+//        Realm.init(this);
+//        RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
+//        Realm.setDefaultConfiguration(config);
+
     }
 }

@@ -4,7 +4,7 @@ import com.example.engahmedatef.ahmed_bahaatask_1.data.local.Posts;
 
 import java.util.List;
 
-public interface MainContract {
+public interface MainContract<P> {
 
     interface Presenter {
 
@@ -18,4 +18,9 @@ public interface MainContract {
         void displayData(List<Posts> posts);
 
     }
+
+//    interface two{
+//
+//        void one ();
+//    }
 }

@@ -40,7 +40,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
 
         final Posts posts = postsList.get(position);
 
-        holder.id.setText("Id   =           " + String.valueOf(posts.getId()));
+        holder.id.setText("Id   =           " + posts.getId());
         holder.title.setText("Title   =           " + posts.getTitle());
         holder.body.setText("Body   =           " + posts.getTitle());
 
