@@ -12,9 +12,7 @@ import java.util.List;
 public class MainPresenter implements MainContract.Presenter {
 
     private MainContract.View view;
-//    private MainContract.two two;
     private ApiModel apiModel;
-
     private DB_Helper db_helper ;
 
     public MainPresenter(Context context, MainContract.View view) {
@@ -22,46 +20,30 @@ public class MainPresenter implements MainContract.Presenter {
         apiModel = new ApiModel();
         db_helper = new DB_Helper(context);
     }
-
-//    public MainPresenter(MainContract.two two){
-//        this.two = two ;
-//        apiModel = new ApiModel();
-//    }
-
     public void getDataMainPresenter(String type) {
         apiModel.getPosts(type, new OnDataLisener() {
             @Override
             public void onSucess(List<Posts> postsList) {
-
                 db_helper.DeleteAllPosts();
 
                 for (int i = 0; i < postsList.size(); i++) {
-
                     // Insert in DataBase
-
                     Posts posts = new Posts();
-
                     posts.setId(String.valueOf(postsList.get(i).getId()));
                     posts.setTitle(postsList.get(i).getTitle());
                     posts.setBody(postsList.get(i).getBody());
 
                     db_helper.insertPost(posts);
-
                 }
-
                 view.displayData(postsList);
             }
-
             @Override
             public void onError(String errorMsg) {
-
                 view.displayError(errorMsg);
             }
         });
     }
-
     @Override
     public void detachView() {
-
     }
 }

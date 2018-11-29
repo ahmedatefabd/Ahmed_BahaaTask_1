@@ -7,20 +7,10 @@ import java.util.List;
 public interface MainContract<P> {
 
     interface Presenter {
-
         void detachView();
     }
-
     interface View {
-
         void displayError(String msg);
-
         void displayData(List<Posts> posts);
-
     }
-
-//    interface two{
-//
-//        void one ();
-//    }
 }
