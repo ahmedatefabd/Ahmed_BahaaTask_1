@@ -3,38 +3,64 @@ package com.example.engahmedatef.ahmed_bahaatask_1.ui.main_screen;
 import android.content.Context;
 
 import com.example.engahmedatef.ahmed_bahaatask_1.callback.OnDataLisener;
+import com.example.engahmedatef.ahmed_bahaatask_1.data.local.PostModel_Room;
 import com.example.engahmedatef.ahmed_bahaatask_1.data.local.Posts;
 import com.example.engahmedatef.ahmed_bahaatask_1.data.remote.ApiModel;
-import com.example.engahmedatef.ahmed_bahaatask_1.data_base.sqlite.DB_Helper;
+import com.example.engahmedatef.ahmed_bahaatask_1.data_base.sqlite.Database_Connection;
+import com.example.engahmedatef.ahmed_bahaatask_1.repository.RepositoryImp;
 
 import java.util.List;
+
+import static com.example.engahmedatef.ahmed_bahaatask_1.ui.main_screen.MainActivity.roomDataBase;
 
 public class MainPresenter implements MainContract.Presenter {
 
     private MainContract.View view;
     private ApiModel apiModel;
-    private DB_Helper db_helper ;
+    private Database_Connection databaseConnection;
+    public Posts posts_1;
+    Context context;
+    private RepositoryImp repositoryImp;
 
     public MainPresenter(Context context, MainContract.View view) {
         this.view = view;
         apiModel = new ApiModel();
-        db_helper = new DB_Helper(context);
+        databaseConnection = new Database_Connection(context);
+        this.context = context;
+        posts_1 = new Posts(context);
+        repositoryImp = new RepositoryImp();
     }
     public void getDataMainPresenter(String type) {
         apiModel.getPosts(type, new OnDataLisener() {
             @Override
             public void onSucess(List<Posts> postsList) {
-                db_helper.DeleteAllPosts();
+
+                repositoryImp.DeleteAllPosts();
 
                 for (int i = 0; i < postsList.size(); i++) {
-                    // Insert in DataBase
-                    Posts posts = new Posts();
-                    posts.setId(String.valueOf(postsList.get(i).getId()));
-                    posts.setTitle(postsList.get(i).getTitle());
-                    posts.setBody(postsList.get(i).getBody());
+                    //SingleTon
+                    PostModel_Room postModel_room = PostModel_Room.getInstance(postsList.get(i).getUserId(), postsList.get(i).getUserId(), postsList.get(i).getTitle(), postsList.get(i).getBody());
 
-                    db_helper.insertPost(posts);
+                    postModel_room.setId(postsList.get(i).getId());
+                    postModel_room.setUserId(postsList.get(i).getUserId());
+                    postModel_room.setTitle(postsList.get(i).getTitle());
+                    postModel_room.setBody(postsList.get(i).getBody());
+
+                    repositoryImp.add(postModel_room);
                 }
+
+//                for (int i = 0; i < postsList.size(); i++) {
+//
+////                   Integer id = postsList.get(i).getId();
+////                   String title = postsList.get(i).getTitle();
+////                    String body = postsList.get(i).getBody();
+
+////                        databaseConnection.insertPost(posts_1);
+//                        repositoryImp.add(posts_1);
+////                        databaseConnection.insertPost(id, title, body);
+////                        repositoryImp.add(id, title, body);
+//                }
+
                 view.displayData(postsList);
             }
             @Override

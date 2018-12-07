@@ -31,6 +31,10 @@ public class Posts implements Parcelable {
         this.context = context ;
     }
 
+    public Posts(Context context) {
+        this.context = context ;
+    }
+
     public Posts(Parcel in) {
         userId = in.readInt();
         id = in.readInt();

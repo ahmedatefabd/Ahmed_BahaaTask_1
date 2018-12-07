@@ -18,14 +18,27 @@ import butterknife.ButterKnife;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder> {
 
-
     private Context context;
     private List<Posts> postsList;
-
 
     public PostsAdapter(Context context, List<Posts> postsList) {
         this.context = context;
         this.postsList = postsList;
+    }
+
+    private static PostsAdapter instance ;
+
+    //Singleton-->PostsAdapter
+    public static PostsAdapter getInstance (Context context, List<Posts> postsList){
+        if (instance == null) {
+            synchronized (Posts.class) {
+                if (instance == null) {
+                    System.out.println("getInstance(): First time getInstance was invoked!");
+                    instance = new PostsAdapter(context, postsList);
+                }
+            }
+        }
+        return instance;
     }
 
     @Override
