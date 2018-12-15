@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             LoadingData();
         } else {
             LoadDataOfflineRoom();
-//            LoadDataOfflineSql();
         }
  }
 
@@ -98,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void displayError(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         LoadDataOfflineRoom();
-//        LoadDataOfflineSql();
     }
 
     @Override
@@ -109,8 +107,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void LoadDataOfflineSql() {
-//        Repositry.RepoData_Api_DB repoDataOF = factory.getData(DB);
-//        repoDataOF.getData();
     }
 
     @Override

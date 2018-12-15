@@ -6,7 +6,6 @@ import static com.example.engahmedatef.ahmed_bahaatask_1.ui.main_screen.MainActi
 
 
 public class RepoGetDataApi implements Repositry.RepoData_Api_DB {
-
     // get data from Api
     @Override
     public void getData() {

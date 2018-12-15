@@ -8,11 +8,8 @@ public interface Repositry {
     interface RepoData_Api_DB{
         void getData();
     }
-
     interface RepoDB{
-
         void add(PostModel_Room postModel_room);
-//        void add(Posts posts);
         void getAllPosts();
         void updateData(int id, String title, String body);
         void DeleteAllPosts();

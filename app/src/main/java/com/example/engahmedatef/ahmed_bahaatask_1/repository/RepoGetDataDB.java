@@ -7,11 +7,9 @@ public class RepoGetDataDB implements Repositry.RepoData_Api_DB {
     public RepoGetDataDB() {
         repositoryImp = new RepositoryImp();
     }
-
     // get data from DB
     @Override
     public void getData() {
         repositoryImp.getAllPosts();
-
     }
 }

@@ -48,19 +48,6 @@ public class MainPresenter implements MainContract.Presenter {
 
                     repositoryImp.add(postModel_room);
                 }
-
-//                for (int i = 0; i < postsList.size(); i++) {
-//
-////                   Integer id = postsList.get(i).getId();
-////                   String title = postsList.get(i).getTitle();
-////                    String body = postsList.get(i).getBody();
-
-////                        databaseConnection.insertPost(posts_1);
-//                        repositoryImp.add(posts_1);
-////                        databaseConnection.insertPost(id, title, body);
-////                        repositoryImp.add(id, title, body);
-//                }
-
                 view.displayData(postsList);
             }
             @Override

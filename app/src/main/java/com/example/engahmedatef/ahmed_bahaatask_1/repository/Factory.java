@@ -1,8 +1,6 @@
 package com.example.engahmedatef.ahmed_bahaatask_1.repository;
 
 public class Factory {
-
-
     //use getData method to get object of type data
     public Repositry.RepoData_Api_DB getData(String dataType){
 
@@ -17,11 +15,6 @@ public class Factory {
         else if(dataType.equalsIgnoreCase("db")){
             return new RepoGetDataDB ();
         }
-        //get data from DB
-//        else if(dataType.equalsIgnoreCase("db")){
-//            return new RepoGetDataDB ();
-//        }
-
         return null;
     }
 }
